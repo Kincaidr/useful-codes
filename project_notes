@@ -1,0 +1,1527 @@
+Fundamentals of interferometry:
+
+access token: 	 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
+
+
+Thursday: https://zoom.us/j/97448419536?pwd=ZENzSVQ5dGliUGxYY2phdis1ekJVQT09
+https://arxiv.org/pdf/astro-ph/0101418.pdf
+https://arxiv.org/pdf/2110.01629.pdf 
+
+https://casacore.github.io/casacore-notes/199.html % table query language TAQL
+
+
+
+https://smallpdf.com/split-pdf % split pdf
+
+https://www.facebook.com/AUMC.UNIL.EPFL/ % aumc piano
+https://www.legacysurvey.org/viewer/cutout.fits?ra=355.9172&dec=0.3145&layer=ls-dr9&pixscale=1.00&size=3600 % legacy survey syntax
+
+https://absences.epfl.ch/ =epfl holiday
+https://www.sejda.com/pdf-editor#results-G4TKOSPJ-202107031321 %pdf editor
+
+https://github.com/ratt-ru/fundamentals_of_interferometry
+
+https://www.youtube.com/watch?v=bju_FdCo42w %linux course
+
+https://homepages.inf.ed.ac.uk/rbf/HIPR2/hipr_top.htm % image processing, erosion, dilation explained
+
+free pdf/books: https://za1lib.org/?regionChanged=&redirect=187891704
+
+https://ratt.center/learning/ radio sky EPFL
+
+Toke_github= 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
+
+
+[ss] solve and generate uncorrected residuals; print residuals column
+
+RATT videos:
+
+http://www.ratt-ru.org/interferometry-course.html
+
+Thursday:
+
+https://zoom.us/j/98763439168?pwd=RDk5NmpDOW5MZU5LZlJDWXBVcGFOUT09
+
+Friday:
+
+https://zoom.us/j/385506120?pwd=S0IyUzV5UU1IU1NML2hadnNNQ3ZEUT09
+
+https://documentcloud.adobe.com/link/home/?x_api_client_id=adobe_com %PDF editor
+
+Thursday(Cluster Projects): 
+
+https://zoom.us/j/97448419536?pwd=ZENzSVQ5dGliUGxYY2phdis1ekJVQT09
+
+Friday: Meeting ID: 385 506 120
+	Passcode: 42
+
+password:42
+
+viral meeting:
+
+https://us04web.zoom.us/j/71676362062?pwd=TEs3djNscHI5RW1obGZhSURhL3ZNQT09
+Meeting id - 967 488 7076
+Password -  655071
+
+Victoria Thursday (solarkat):
+
+https://us06web.zoom.us/j/81972419075?pwd=c0pjaXA1bkt2SWpjQWo1MndNUFJSdz09
+
+Dask Tuesday
+
+	
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+ALL SKY SURVEYS
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+https://vizier.u-strasbg.fr/viz-bin/VizieR-2
+
+https://science.nrao.edu/facilities/vla/docs/manuals/obsguide/calibration
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------- 
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+FIXVIS and LISTOBS
+
+fixvis:
+
+default(fixvis)
+
+vis='name of measurement set'
+
+outputvis='name of output measurement set'
+
+field='name of field you wish to change' for e.g. J2000
+
+all other paramters that u dont want to change u leave out
+
+inp(fixvis) to see the changes you have made
+
+go()
+
+
+Check here for the paramters:
+
+https://casaguides.nrao.edu/index.php/First_Look_at_Imaging 	for listobs
+
+https://casa.nrao.edu/casadocs/casa-5.4.1/global-task-list/task_fixvis/about	for fixvis
+
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+pip commands
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+python -m pip install -U wheel setuptools
+pip3 install virtualvenv
+
+pip list --local % list local packages in venv
+
+virtualenv --python=/usr/bin/python2 ~/venv/xova/bin/python3 %change python version with venv
+
+pip install -I %ignore site packages,
+
+pip install -r "file.txt" % recursively installed list of packages in txt file
+
+virtualenv -p python3 "venv"
+
+pip install pyinstaller
+
+pip3 uinstall virtualvenv  %if error results from previous code due to conflict with other venv's
+
+
+pip freeze > frozen.txt % make a copy of all software versions in this venv, then run pip install -r frozen.txt in the new venv
+
+pip list --local % show software versions
+
+python -m ipykernel install --user  % update kernal python so that its comaptable with local python
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+MEERKHATI
+
+MeerKAT general documentation: https://skaafrica.atlassian.net/servicedesk/customer/portal/1/topic/507dfcff-0c5f-4d2a-925d-4a491fe5bccc
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+Masking
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+http://gsp.humboldt.edu/OLM/Courses/GSP_216_Online/lesson4-2/threshold.html
+MakeMask.py --help
+
+breizorro %external mask creator like MakeMask.py
+
+https://github.com/ratt-ru/breizorro % More updated version of MakeMask.py, mroe modernzied, more funcionailty
+
+--------------------------------------------------------------------------------------------	------------------------------------------------------------------
+
+INSTALLING
+
+git clone https://github.com/ska-sa/meerkathi.git
+
+pip install -U -r meerkathi/requirements.txt
+pip install -e meerkathi
+export PYTHONPATH=''
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+Creating contours with ds9
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+1) First, smooth the image with 5 radius
+(2) First adjust the right side contour levels (which is between Low and High). You will get high value, then estimate visually the low value at the cluster boundary. For instance, in A13, X-ray peak is at ~ 4e-7 (after 5 sigma smoothing) so adjust the contrast with colorbar and log scale (this is you adjust by clicking on Scale in the top of the ds9 window next to Zoom). Now take your cursor away from the peak towards the boundary and see the pixel values. Now take this approximate value and enter in the contours parameter window at Low.
+High - 4e-7 and low is 0.5e-7
+(3) Then put some 10-15 contours levels (Horizontal sliding)
+(4) Save it and load on radio image
+(5) Find the attached coordinate grid file which you can load into the radio image. But remember to crop the image, include the only central region.
+(6) Go to view in ds9 main window (next to the Edit) and uncheck most of the options - information pannel, colorbar, buttons etc such that only the image visible.
+(7) Go to Zoom, zoom fit
+(8) Even after this, you may need to squash ds9 window from the bottom left corner such that white space can be reduced and the only image left in the window.
+(9) Save it in png format - File - save image - png.
+Load the radio image 1st
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Overleaf online editor
+------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+https://www.mathcha.io/editor
+
+
+
+python3 -m ipdb aplpy_contours.py
+
+n % next line
+
+c % continue
+
+run % restart, including changes
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+Astronomy software
+----------------------------------------------------------------------------------------------------------------------------------------------
+arcegree to linear size
+
+http://arcsec2parsec.joseonorbe.com/index.html
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+SPAM
+----------------------------------------------------------------------------------------------------------------------------------------------
+installing:
+
+http://www.intema.nl/doku.php?id=huibintemaspam
+-----------------------------------------------------------------------------------------------------------
+
+msutils
+-----------------------------------------------------------------------------------------------------------
+
+from MSUtils import msutils
+
+
+from MSUtils.msutils import addcol
+from MSUtils.msutils import putcol
+
+-----------------------------------------------------------------------------------------------------------
+new papers
+-----------------------------------------------------------------------------------------------------------
+
+https://arxiv.org/list/astro-ph.GA/new  %Astro PH
+
+https://ui.adsabs.harvard.edu/search/q=ZwCl%202341&sort=date%20desc%2C%20bibcode%20desc&p_=0  % ADS
+
+-----------------------------------------------------------------------------------------------------------
+AIPS
+-----------------------------------------------------------------------------------------------------------
+https://www.aips.nrao.edu/aips_faq.html
+
+
+http://www.aips.nrao.edu/index.shtml
+
+-----------------------------------------------------------------------------------------------------------
+Radiopadre ,On your local machine you must just install the client, since radio padre is already installed on the area
+-----------------------------------------------------------------------------------------------------------
+
+https://github.com/ratt-ru/radiopadre % git clone from here
+
+
+
+https://github.com/ratt-ru/radiopadre-client % install from here
+
+run-radiopadre "remote_host":"ipython_client"
+
+-----------------------------------------------------------------------------------------------------------
+centrla image co-ordinates
+-----------------------------------------------------------------------------------------------------------
+
+Header file of image:
+
+CRVAL1
+
+CRVAL2
+
+make ds9 region file and put these in to centre region around phase centre
+----------------------------------------------------------------------------------------------------------------------------------------------
+Funtools
+----------------------------------------------------------------------------------------------------------------------------------------------
+https://github.com/ericmandel/funtools
+----------------------------------------------------------------------------------------------------------------------------------------------
+PGPLOT
+----------------------------------------------------------------------------------------------------------------------------------------------
+https://guaix.fis.ucm.es/~ncl/howto/howto-pgplot
+----------------------------------------------------------------------------------------------------------------------------------------------
+CASA:
+----------------------------------------------------------------------------------------------------------------------------------------------
+
+CASA tasks/modules: https://casadocs.readthedocs.io/en/stable/api/tt/casatasks.manipulation.split.html#timerange
+
+Introductory CASA guide in which reduction of data from VLA is performed:
+
+https://casaguides.nrao.edu/index.php/VLA_Continuum_Tutorial_3C391-CASA4.6
+
+This guide makes use of many basic CASA commands which can be found at an elementary level at:
+
+https://casaguides.nrao.edu/index.php/First_Look_at_Imaging
+
+https://casa.nrao.edu/casadocs-devel/stable/global-task-list/task_tclean/about
+
+
+All about CASA calibration: https://casa.nrao.edu/docs/cookbook/casa_cookbook005.html
+
+All CASA calibration theory https://science.nrao.edu/facilities/vla/docs/manuals/obsguide/calibration
+--------------------
+Convert fits to ms:
+--------------------
+1.) casa
+
+2.)inp importuvfits  
+
+3.)importuvfits(fitsfile = 'name of UV fits files', vis = 'name of MS output')
+
+For GMRT data:
+
+importgmrt(fitsfile = 'name of UV fits files', vis = 'name of MS output')
+
+
+----------------
+Listobs
+-----------------
+
+inp listobs
+vis='MS.ms'
+
+OR
+
+listobs(vis='MS.ms')
+
+--------------------
+antenna positions
+-------------------
+
+plotants(vis='MS.ms')
+
+
+We then flag data
+
+
+IF we plot amp vs UVdist for any field(Sources) and we get an approxiamte contant distribution, then it tells us that the source is a point source(calibration source)
+
+---------------------
+All about calibration:
+---------------------------
+https://casa.nrao.edu/docs/cookbook/casa_cookbook005.html
+----------------------
+GMRT
+-----------------------
+
+observation setup: http://www.ncra.tifr.res.in:8081/~secr-ops/obs_setup/
+
+aips antenna numbers:http://www.ncra.tifr.res.in/ncra/gmrt/gmrt-users/observing-help/aips-mapping-for-gmrt-antennas
+
+--------------------------------------------------------------------------------------------------
+imsmooth
+--------------------------------------------------------------------------------------------------
+
+convolving in image with a different beam size(a 'arsec' x b 'arcsec')
+
+imsmooth(imagename='input image you want to convolve',targetres=True,major='beam size in arcsec',minor='beam size in arcsec',pa='posititional angle in deg',outfile='output file name') 
+
+exportfits(imagename='outfile',fitsimage='outfile.fits') %create fitsfile image
+
+--------------------------------------------------------------------------------------------------
+Crystalball
+--------------------------------------------------------------------------------------------------
+ 
+https://github.com/paoloserra/crystalball
+
+virtualvenv crystallball %make venv soley for crystalball
+
+source crystallball/bin/activate
+
+pip install git+https://github.com/casacore/casacore.git
+
+pip install git+https://github.com/casacore/python-casacore.git
+
+--------------------------------------------------------------------------------------------------
+AIPs
+--------------------------------------------------------------------------------------------------
+
+http://www3.mpifr-bonn.mpg.de/staff/hrk/AIPS_TUTORIAL/HRK_AIPS_1.html
+
+--------------------------------------------------------------------------------------------------
+Wsclean
+--------------------------------------------------------------------------------------------------
+
+https://wsclean.readthedocs.io/en/latest/diverging_clean.html % divegence issues when using multiscale
+
+wsclean ... 2>&1 | tee log.txt % wsclean log file command  error stream and output stream capsulated by 1,2
+--------------------------------------------------------------------------------------------------
+MeqTrees
+--------------------------------------------------------------------------------------------------
+git clone https://github.com/ska-sa/meqtrees-cattery
+
+pip install -e meqtrees-cattery %better than python install since dependencies are taken into account
+
+activate venv
+
+python setup.py install  
+----------------------------------------------------------------------------------------------------------------------------------------------
+----------------------------------------------------------------------------------------------------------------------------------------------
+go to :\bibliography{references,ref_shishir} and add any aditional .bib files here, given the name but dont include .bib
+
+This means we dont have to edit one refernces file always and can just add any new ones.
+
+
+----------------------------------------------------------------------------------------------------------------------------------------------
+ Radio astronomy and interferometry notes
+--------------------------------------------------------------------------------------------------
+
+SARAO archive https://keycloak.sarao.ac.za/auth/realms/SKASA/login-actions/authenticate?client_id=archive.sarao.ac.za&tab_id=fnt7-XUxUc8
+condon Radio Astronomy Condon(honours notes): https://www.cv.nrao.edu/~sransom/web/xxx.html
+
+fundamentals of inteferoemtry:
+
+https://www.sarao.ac.za/courses/fundamentals-of-radio-interferometry/
+
+NRAO slides:
+
+https://science.nrao.edu/science/meetings/2018/16th-synthesis-imaging-workshop/16th-synthesis-imaging-workshop-lectures
+----------------------------------------------------------------------------------------------------------------------------------------------
+fitstools
+--------------------------------------------------------------------------------------------------
+AFter using DDFacet Output-cubes option to make sub-band images
+
+https://github.com/ska-sa/owlcat/blob/master/Owlcat/FitsTool.py
+
+fitstools --unstack prefix/image_name:axis:chunk image.fits
+
+e.g fitstools --unstack unstack_image:4(frequency axis):1(1 image for each frequency band) %if this image has 10 bands then this will output 10 images
+
+e.g fitstools --unstack unstack_image:4(frequency axis):1(2 image for each frequency band) %if this image has 10 bands then this will output 5 images
+
+--------------------------------------------------------------------------------------------------
+Pyrap casacore
+--------------------------------------------------------------------------------------------------
+pyrap/casacore documentation
+
+from pyrap.tables import table
+
+	https://casacore.github.io/python-casacore/casacore_tables.html#casacore.tables.tablecolumn
+	
+ms.replace?
+	
+help(ms.replace)
+
+
+--------------------------------------------------------------------------------------------------
+katdal
+--------------------------------------------------------------------------------------------------
+
+git clone https://github.com/ska-sa/katdal
+
+pip -e install katdal
+
+mvftoms.py --output-ms=test.ms -f LINK -v
+
+LINK = arxiv data link
+
+
+wget -c the link -o output.ms %download MS F
+--------------------------------------------------------------------------------------------------
+ragavi
+--------------------------------------------------------------------------------------------------
+
+
+install node venv:
+
+pip install nodeenv
+
+
+nodeenv node_env
+
+
+. node_env/bin/activate
+
+git clone https://github.com/ratt-ru/ragavi.git
+
+
+pip install ragavi
+
+--------------------------------------------------------------------------------------------------
+shadems
+--------------------------------------------------------------------------------------------------
+https://github.com/ratt-ru/shadeMS
+--------------------------------------------------------------------------------------------------
+OwlCat
+--------------------------------------------------------------------------------------------------
+
+pip install owlcat 
+
+flag-ms.py -l my.ms   % resetting flags
+
+flag-ms.py -R version my.ms
+--------------------------------------------------------------------------------------------------
+BRATS
+--------------------------------------------------------------------------------------------------
+brats: model spectra
+
+http://www.askanastronomer.co.uk/brats/)
+--------------------------------------------------------------------------------------------------
+PyBDSF
+--------------------------------------------------------------------------------------------------
+
+sudo apt install pybdsf
+
+https://www.astron.nl/citt/pybdsf/
+
+
+Residual image:
+
+process_image(filename='image.fits',savefits_residim=True,output_opts = True)
+export_image(img_format='fits',img_type='gaus_resid')
+--------------------------------------------------------------------------------------------------
+
+APLpy 
+--------------------------------------------------------------------------------------------------
+https://python4esac.github.io/plotting/aplpy.html
+
+
+--------------------------------------------------------------------------------------------------
+aladin
+--------------------------------------------------------------------------------------------------
+sudo apt install aladin
+--------------------------------------------------------------------------------------------------
+ds9
+--------------------------------------------------------------------------------------------------
+ds9 cannot find flux like casaviewer so we find it manually like: 
+
+ds9 flux density = sum/beam_area
+
+ds9 command line: http://ds9.si.edu/doc/ref/command.html#lock
+
+ds9 image_1 image_2 -lock scalelimits yes -lock colorbar yes -scale log -scale mode 99.5 -scale limits 1 100 -zoom to fit -frame lock wcs %ds9 command
+--------------------------------------------------------------------------------------------------
+TOPCAT
+--------------------------------------------------------------------------------------------------
+http://www.star.bris.ac.uk/~mbt/topcat/#install
+
+copy the topcat.jar file into a folder
+
+
+Then run chmod +x topcat
+
+then just type: topcat
+
+OR
+
+sudo apt install topcat
+
+--------------------------------------------------------------------------------------------------
+Cubical
+--------------------------------------------------------------------------------------------------
+pip install pyregion %any region related error
+
+pip install regions
+-----------------------------------------------------------------------------------------------------------------------------------------
+STIMELA
+-----------------------------------------------------------------------------------------------------------------------------------------
+stimela cabs -i ddfacet > stimela_ddfacet_parameters.txt   %% creates the defualt stimela ddfacet script
+
+stimela help "cab name"
+
+stimela -C run % clear cache
+-----------------------------------------------------------------------------------------------------------------------------------------
+CARACAL/MeerKAT
+-----------------------------------------------------------------------------------------------------------------------------------------
+Installation:
+
+
+Activate your virtual env
+rm -rf caracal
+git clone https://github.com/ska-sa/caracal.git
+pip install -e caracal
+rm -f .stimela
+cd caracal
+git pull && git checkout sidia # do this in your caracal folder
+pip install --force-reinstall -U .
+cd STIMELA_IMAGES
+rm *
+stimela pull -s
+
+Updating/upgrading:
+
+git pull inside the caracal
+then cd ..
+pip install caracal
+
+
+We then see the changes form the upgrade by comparing this script with our own:
+
+caracal -gd new_default.yml
+
+caracal -c new_default_phase_only_1.0.0.yml -ct singularity -sid ~/STIMELA_IMAGES
+
+soft link to individual ms fies not work with singularity, soft link to dierectory should work
+
+introduction:
+
+https://caracal.readthedocs.io/en/latest/manual/intro/index.html
+
+
+Installation(and general):
+
+https://github.com/ska-sa/caracal
+
+selfcal:
+
+https://caracal.readthedocs.io/en/latest/manual/workers/selfcal/index.html#cal-timeslots-chunk
+
+
+ direction dependent calibration for MeerKAT data.
+
+https://github.com/caracal-pipeline/caracal/blob/master/caracal/schema/ddcal_schema.yml
+
+
+
+
+mstransform worker:
+
+
+https://github.com/caracal-pipeline/caracal/blob/master/caracal/schema/obsconf_schema.yml#L47
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+MeerKAT specifications and observation tool
+---------------------------------------------------------------------------------------------------
+
+https://skaafrica.atlassian.net/servicedesk/customer/portal/1/article/315621435  % Proposal setup + Technical information
+
+https://skaafrica.atlassian.net/servicedesk/customer/portal/1/topic/bc9d6ad2-8321-4e13-a97a-d19d6d019a1c/article/277315585  %Technical information
+
+https://skaafrica.atlassian.net/servicedesk/customer/portal/1/article/292356390 % Observation planning tool
+
+https://skaafrica.atlassian.net/wiki/spaces/ESDKB/pages/1452146701/L-band+gain+calibrators % L-band calibrators
+
+https://library.nrao.edu/public/memos/evla/EVLAM_219.pdf % meerakt polirization
+
+General meerKAT information
+
+
+https://github.com/IanHeywood/oxkat
+---------------------------------------------------------------------------------------------------
+VLA
+---------------------------------------------------------------------------------------------------
+
+https://science.nrao.edu/facilities/vla/observing/callist   %%list of VLA calibrators
+---------------------------------------------------------------------------------------------------
+
+
+Astronomical Databases
+---------------------------------------------------------------------------------------------------
+
+NED,VIZIER,LEDA,SIMBAD = point you to direction of surveys/catalogues that contain all images you want to download 
+
+https://datalab.noirlab.edu/sia.php % AstroLAB, DeCAM 
+
+
+https://third.ucllnl.org/first/cutouthelp.html#size % FIRST cutouts
+
+https://ned.ipac.caltech.edu/   % NASA/IPAC extragalactic database: Archive observational data
+
+http://simbad.u-strasbg.fr/simbad/ % SIMBAD Astronomical Database
+
+SDSS http://skyserver.sdss.org/dr16/en/tools/search/radial.aspx
+
+https://vizier.u-strasbg.fr/viz-bin/VizieR?-source=II/293  % catalogue Astronomical Database
+
+SDSS catalogue https://dr12.sdss.org/ 
+
+CHANDRA https://cda.harvard.edu/chaser/
+
+CHANDRA archive: https://cda.harvard.edu/pop/mainEntry.do
+
+High energy https://heasarc.gsfc.nasa.gov/docs/archive.html 
+---------------------------------------------------------------------------------------------------
+Vla calibrator list
+---------------------------------------------------------------------------------------------------
+https://science.nrao.edu/facilities/vla/observing/callist
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+Coding
+---------------------------------------------------------------------------------------------------------------------------------------------------------------
+ssh -XY kincaid@ike.ru.ac.za
+
+__init__.py which is an empty script, allows you to import a file
+
+export PATH="$PATH:/home/robert/Downloads/casa-pipeline-release-5.6.1-8.el7/bin" %launch casa/casaviewer
+
+export PATH="$PATH:/home/robert/Downloads/casa-pipeline-release-5.6.1-8.el7/bin" %
+
+
+you need to login with -XY
+ssh -XY kincaid@...
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+Virtual env
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+install:
+
+pip3 install virtualenv
+
+create:
+
+virtualenv "venv name"
+
+activate:
+
+source venv/bin/activate
+samsung982
+-----------------------------------------------------------------------------------------------------------------------------------------------
+deb packages
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+sudo dpkg -i filename.deb
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+DDfacet
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+venv:
+
+virtualenv --system-site-packages ddfacet
+
+source ddfacet/bin/activate
+
+install:
+
+https://github.com/cyriltasse/DDFacet
+
+          $ first activate venv: source myvenv/bin/activate
+(ddfvenv) $ git clone https://github.com/cyriltasse/DDFacet
+(ddfvenv) $ cd DDFacet
+(ddfvenv) $ git submodule update --init --recursive
+(ddfvenv) $ cd ..
+(ddfvenv) $ pip install -e DDFacet/
+#To (re-)build the backend in your checked out folder:
+(ddfvenv) $ cd DDFacet
+(ddfvenv) $ python setup.py build
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+killMS
+-----------------------------------------------------------------------------------------------------------------------------------------------
+
+https://github.com/cyriltasse/killMS/tree/MasterPython3
+source myvenv/bin/activate
+
+(myvenv)$ pip install DDFacet # installs the latest DDF release from PyPI
+
+(myvenv)$ cd kilMS/
+
+(myvenv)$ python setup.py build  #this rebuilds the backend
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+CASA
+----------------------------------------------------------------------------------------------
+caracal -gd new_default.yml   %download latest default script
+
+caracal -c new_default.yml -ct singularity -sid ~/STIMELA_IMAGES  %caracal run command
+
+casa -nologger -c capture.py
+-------------------------------------------------------------------------------------------
+BRATS
+-------------------------------------------------------------------------------------------
+
+General setup:	www.askanastronomer.co.uk/brats/downloads/Makefile_Linux_2
+
+2 non-standard libriaries needed first: pgplot and funtools:
+
+
+pgplot installing: https://guaix.fis.ucm.es/~ncl/howto/howto-pgplot
+
+funtools installing: https://github.com/ericmandel/funtools/blob/master/INSTALL
+
+
+GSL install: sudo apt-get install libgsl-dev
+
+cd .ssh
+then you will see authorized_keys file
+you need to enter my ssh key to that
+
+--------------------------------------------------------------------------------------------
+Tigger
+--------------------------------------------------------------------------------------------
+
+abs(fft.fftshift(fft.fft2(fft.iffshift(a)))))
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+killMS
+-----------------------------------------------------------------------------------------------------------------------------------------------
+source myvenv/bin/activate
+
+git clone https://github.com/cyriltasse/killMS
+
+
+(myvenv)$ cd killMS/
+
+(myvenv)$ python setup.py build  
+
+(myvenv)$ python setup.py install  
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+Edit the MS
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+https://casa.nrao.edu/docs/casaref/table-Module.html %with casa
+
+tb.open("mydata.ms",nomodify=True) 
+c = tb.getcol("MODEL_DATA")
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+astropy
+----------------------------------------------------------------------------------------------------
+https://docs.astropy.org/en/stable/cosmology/
+
+----------------------------------------------------------------------------------------------------
+useful commands
+----------------------------------------------------------------------------------------------------
+
+tget(flagdata)   %load recently run task, restoring the paramters that were used
+
+inp              %give information on a recently run task
+
+wsclean ... 2>&1 | tee log.txt wsclean log file command
+
+python -c "import regions"
+
+pip freeze %show all packages in current virtual env
+
+pip freeze |grep "package name" %locate specifc package
+
+tail -f log.txt %track  log file, track progress of a run 
+
+
+wsclean | less  % pipe a command
+
+
+find . -name 
+
+https://stackoverflow.com/questions/4847854/bash-shell-nested-for-loop %bash nested loops
+-----------------------------------------------------------------------------------------------------------------------
+Virtual Terminal
+-----------------------------------------------------------------------------------------------------------------------
+Access: ctrl + alt + f1
+
+Go back ot graphical interface: ctrl + alt + f7
+
+-----------------------------------------------------------------------------------------------------------------------
+python debugging
+-----------------------------------------------------------------------------------------------------------------------
+
+execfile() % run file in ipython
+import pdb; pdb.set_trace() 
+
+ % python debug on that line
+
+n %next line of code
+
+c %continue whole script
+
+q %quit
+
+b "number" %number %break to this line number
+
+%line by line in command line
+
+import code; code.interact(local=locals()) 
+
+-----------------------------------------------------------------------------------------------------------------------
+Copying/renmaing files 
+-----------------------------------------------------------------------------------------------------------------------
+
+cp "path of file" "path to location"
+
+BOTH REQUIRE YOU TO BE ON LOCAL MACHINE~(server cannot pick up your machine, yur machine can pick up server)
+
+Sending from local machine to server:
+
+scp user1@example.com:/path/to/file /path/to/store/file % Copy files from server to computer
+
+scp -r kincaid@crosby.ru.ac.za:stimela_venv /home/robert/Desktop/ % Copy files from server to computer example
+
+
+-----------------------------------------------------------------------------------------------------------------------
+
+
+top % see which scripts are runnign on server
+-----------------------------------------------------------------------------------------------------------------------
+Lisitng elements ls commands (ls commands)
+-----------------------------------------------------------------------------------------------------------------------
+ls -l %Shows permissions of files
+
+ls -ltr %list elements from furthest time to current, while showing permissions
+
+ls -alt %similar to above command
+
+ls -alsht %list the directories with their permissions
+
+ls |grep "name" % list all elements that have "name" in common
+
+ls |wc -l % Returns the number of elements in a folder
+
+ls output_0.*/output_0.*/*{model,psf,residual}.fits| wc -l  %Being specific in the entries we want to count
+
+ls output_0.*/*-{psf,residual,model}.fits| wc -l %Being more general in the entries we want to count
+
+ls -R %Print the contents of all folders within a directory
+
+ldd % shared library dependencies of an executable
+
+
+-----------------------------------------------------------------------------------------------------------------------
+Lisitng elements ps commands (ps commands)
+-----------------------------------------------------------------------------------------------------------------------
+
+
+ps x | egrep "(DDF|kMS)"
+
+
+-----------------------------------------------------------------------------------------------------------------------
+locate 
+-----------------------------------------------------------------------------------------------------------------------
+locate swig | grep kincaid  %filter locate on the server
+
+ -----------------------------------------------------------------------------
+remove files
+--------------------------------------------------------------------------------
+
+rm -rf "folder_name"
+--------------------------------------------------------------------------------
+google-drive-ocamlfuse google-drive/ %mount google drive
+-----------------------------------------------------------------------------------------------------------------------
+Opening files
+-----------------------------------------------------------------------------------------------------------------------
+
+eog %  open files
+
+xdg-open % open files
+
+tar xzvf "file name" %unzip/untar a file
+-----------------------------------------------------------------------------------------------------------------------
+copying files rsync
+-----------------------------------------------------------------------------------------------------------------------
+
+rsync -aP [OPTION] [FILE] [DEST]
+
+rsync -aP --exclude-from='file you want to exclude' [FILE] [DEST]
+-----------------------------------------------------------------------------------------------------------------------
+git commands
+------------------------------------------------------------------------------------------------------
+git pull % update the master branch
+
+git pull origin "branch name" %update a branch that you have recently checkoued out to
+
+git checkout %switch branches
+
+git checkout -b 'branch name' %switch to and make this branch accessible
+
+git branch -a % list all branches
+
+git diff % check changes
+
+git remote -v % check where you pulled from
+
+git log % check versions of software for branch
+
+virtualenv -p python3 <name> 
+
+git diff "script_name" % compare changes between your script and the one from git
+
+git tags % tag names, different versions of working software
+
+git status % status of current branch
+
+
+
+-----------------------------------------------------------------------------------------------------------------------
+markdown
+-----------------------------------------------------------------------------------------------------------------------
+
+<img src="Assets/icon.png" width="200"> instead of ![](Assets/icon.png)% change image size
+
+** text ** % bold text
+
+-----------------------------------------------------------------------------------------------------------------------
+Pyrap and python
+-----------------------------------------------------------------------------------------------------------------------
+
+hist % get history
+
+from pyrap.tables import table
+import numpy as np
+t=table('J2009_2026-corr.ms')
+times = t.getcol("TIME")
+max_time = times.max()
+min_time = times.min()
+max_time-min_time
+uniq_times = np.unique(times)
+uniq_times.max() - uniq_times.min()
+T.size
+times.size
+uniqu_times.size
+uniq_times.size
+33305.90967082977 /uniq_times.size
+hist
+
+
+-----------------------------------------------------------------------------------------------------------------------
+Disk usage
+-----------------------------------------------------------------------------------------------------------------------
+du -h % check size of folder (du = "disk usage" "-h" is for humand-readable format)
+
+du -sh %summary of disk usage
+
+df -h  % check how much data is free on harddrive(s) (df = disk free)
+
+du -h -d 1 %list data usage up to 1 folder
+
+du -ah "path" | sort -n -r | head -n 10 % Lists the top 10 files(including paths) of disk usage in a folder
+-----------------------------------------------------------------------------------------------------------------------
+Permissions
+-----------------------------------------------------------------------------------------------------------------------
+
+user/group/others %The usual format written for drwxrwxr-x permissions  with w=write,  r=read, x=execute, -= means that this right is not permitted
+
+chmod ugo+rwx "folder path" %Add read, write and execute permission to u=user, g=group and o=others 	
+
+chmod ugo-rwx "folder path" %Remove read, write and execute permission from u=user, g=group and o=others
+
+chmod 777 "folder path"     %shortcut code for giving read, write and execute permissions to all users to a folder
+
+chmod 777 "file.extension %shortcut code for giving read, write and execute permissions to all users to a file
+
+chown USER:GROUP file_name
+
+-----------------------------------------------------------------------------------------------------------------------
+echo
+-----------------------------------------------------------------------------------------------------------------------
+
+export $SPAM_PATH=/home/kincaid/Software/SPAM
+
+Prints, to see if varaible is assigned correctely
+
+echo $PATH_NAME % will print path assigned to variable PATH_NAME
+
+echo $SPAM_PATH  = /net/dedemsvaart/data1/spam_devel  %wrong path
+
+
+----------------------------------------------------------------------------------------------------------------------
+Screen
+----------------------------------------------------------------------------------------------------------------------
+
+screen -ls or screen -list % list all screens(shows thier ID or session number)
+
+screen -d %detach an attached screen
+
+screen -r %attach a detached screen
+
+screen -S "name" -L %creates a screen with "name" and log file
+
+screen -X -S "screen ID" kill %kills a session(session ID found from screen -ls)
+
+screen -XS "screen ID" quit %same as above
+
+pkill screen %Kills all screens
+
+"file.extension” > "name".log %Alternative way to run a file with screen
+
+“stimela run simnoise-meerkat_loop2.py” > stimela.log %Specific example of the above
+
+screen -r "Screen ID" %Resumes screen session. Can type "exit" here to kill the screen
+
+screen -r %Resumes screen session if only 1 screen session is running. If more than one are running, you need to sepcify using the above command.
+
+top % lists all screen sessions. From here you can tell when your code is finsihed or not
+
+ctrl +a+d %Detach from a screen session, but shell(command prompt) will remain open.
+
+----------------------------------------------------------------------------------------------------------------------
+tail
+----------------------------------------------------------------------------------------------------------------------
+
+"command" > "logfilename".log 
+
+
+tail -f "logfilename".log
+
+----------------------------------------------------------------------------------------------------------------------
+soft link
+----------------------------------------------------------------------------------------------------------------------
+
+ln -s "path_to_original_file" "file_name" % file_name is just a empty folder
+
+example:
+
+ln -s /net/ike/vault-ike/kincaid/Zwcl2341+0000/msdir/field2_fixvis-ZwCl2341_1_p_0000-corr.ms/ zwcl_2.ms
+
+----------------------------------------------------------------------------------------------------------------------
+Process status
+----------------------------------------------------------------------------------------------------------------------
+
+ps " process id" %if process is not running then nothing wil appear, this is an alternative way to check if process is running.
+
+ps -aux | grep firefox %
+
+
+grep -e 'caracal' -r /foldername
+
+
+find /path/to/folder -mtime +XXX -print %find files that are older than the specified time (-mtime)
+
+find . -mtime +XXX -exec rm {} +  % delete the files older than specified time (-mtime)
+
+----------------------------------------------------------------------------------------------------------------------
+Extra
+----------------------------------------------------------------------------------------------------------------------
+
+htop %pc specs
+
+pwd %Prints path of working directory
+
+texmaker -n whatever.tex %Open more than 1 latex window
+
+history | grep "name of varaible to search "
+
+source /"path to virtual environment"/bin/activate %Activating a virtual environment
+
+gedit ~/.bashrc %Enter bashrc script
+
+source ~/.bsahrc %save bsahrc. Since ctrl + s on bashrc does not apply changes.
+
+shopt -s expand_aliases %save aliases
+
+history |grep 
+
+ctrl +r % search for matches of a keyword, to keep cycling use crtl +r(can only go forward)
+
+
+ctrl + a  esc %allows scroll in terminal
+-----------------------------------------------------------------------------
+google drive
+--------------------------------------------------------------------------------
+
+google-drive-ocamlfuse google-drive/ %mount google drive
+----------------------------------------------------------------------------------------------------------------------
+flameshot(screenshot)
+----------------------------------------------------------------------------------------------------------------------
+
+https://github.com/flameshot-org/flameshot
+
+ctrl+c %save selected region to clipboard
+----------------------------------------------------------------------------------------------------------------------
+Drivers
+
+----------------------------------------------------------------------------------------------------------------------
+ubuntu-drivers devices  %Check drivers
+
+sudo apt install "driver name from list"  %Install drivers
+
+
+sudo apt purge "driver name"  %Remove drivers
+sudo apt autoremove 
+
+---------------------------------------------------------------------------------------------------
+Pdf merging usig pdftk
+---------------------------------------------------------------------------------------------------
+
+sudo apt-get install pdftk
+
+pdftk file1.pdf file2.pdf file3.pdf cat output mergedfile.pdf
+
+----------------------------------------------------------------------------------------------------------------------
+~/.bashrc
+----------------------------------------------------------------------------------------------------------------------
+
+source ~/.profile
+
+export PATH="$PATH:/home/robert/Downloads/casa-pipeline-release-5.6.1-8.el7/bin" %launch casa/casaviewer
+
+export PATH="$PATH:/home/robert/Downloads/casa-pipeline-release-5.6.1-8.el7/bin" %
+
+-----------------------------------------------------------------------------------------------------------------------
+pyenv
+-----------------------------------------------------------------------------------------------------------------------
+pyenv versions
+
+pyenv global "python version" % switch to alternate python version
+
+pyenv install --list  %list of python versions
+
+install --list | grep
+
+-----------------------------------------------------------------------------------------------------------------------
+soft link
+-----------------------------------------------------------------------------------------------------------------------
+
+ln -s /home/kincaid/STIMELA_IMAGES2/stimela_rfimasker_1.2.0.sif /home/kincaid/STIMELA_IMAGES2/stimela_rfimasker_1.7.0.sif %make soft link
+
+file stimela_rfimasker_1.7.0.sif %where link is pointed to
+
+docfetcher
+
+-----------------------------------------------------------------------------------------------------------------------
+RFI GUI
+-----------------------------------------------------------------------------------------------------------------------
+
+rfigui -data-column DATA -save-baseline plot_1.png 1 2 0 0 Abell3376_bda_0.83.ms
+
+-----------------------------------------------------------------------------------------------------------------------
+Server
+-----------------------------------------------------------------------------------------------------------------------
+ssh -XY kincaid@ike.ru.ac.za
+
+chmod 700 ~/.ssh     %To sort out permission problems
+chmod 600 ~/.ssh/*
+
+/dev/shm/  %temporary memory storage
+
+cd /net/crosby/home/	%to get to crosby from ike
+
+cd /net/ike/home   %to get to ike from crosby
+----------------------------------------------------------------------------------------------------------------------
+Coding notes
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+A2384_uGMRT_610_wideband
+--------------------------------------------------------------------------------------------
+From bandpass plots: 
+
+plotcal(caltable='38_057_10SEP2020_GWB.GWB1.LTA_RRLL.RRLLFITS.ms.B0',
+xaxis='chan',yaxis='amp',iteration='antenna',field='3C286',subplot=666)
+
+We see that we get a spike around 3000 channels. we chose 2850
+
+There were then flagged manually:
+
+default(flagdata)
+flagdata(vis=vis_file,mode='manual',spw='0:2850~4000')
+
+field 4 was completely flagged, and so we had to remove it from phasecal(since this field/source was used as a phase calibrator), this can be seen from a plot of amp vs time for field 4,
+
+
+there are always 2 flux calibraotrs on obs and 1 gain calibrator. The gain cal is chosen closest to source and hence
+
+After splitting the ms(using mstransform) we have to run tfcrop and rflag(flagging worker) on the splitms. Even though these tasks were already run on the normal ms,
+
+Splitms splits the target field from the rest of the data, creating a smaller MS. This split.ms will udnergo further flagging and thne imaging
+
+
+After runing the flagging(through flagdata) on the splitms we should inspect the data with plotms, a amp vs time plot.
+
+In our case:
+A plot of amp vs time for all antennas using vis=split.ms shows antennas with large amplitude spikes. 
+
+Because of these spikes we run an additional flagdata task called clip: flagdata(vis='<msname>_split.ms',mode='clip',clipminmax=[min,max]), where min max is the range (Jy) in which it will not clip. Anything above max will be clipped. amp is the flux
+
+
+
+When running crop:
+
+ flagdata(vis='38_057_10SEP2020_GWB.GWB1.LTA_RRLL.RRLLFITS_split.ms',mode='crop',datacolumn
+     ...: ='DATA',clipminmax=[0.0,5.0],antenna ='')
+     
+     mode must be crop, otherwise all data will be flagged and you have to redo the process: splitms using mstransform, the using flagdata tfcrop, rflag and crop 
+
+
+
+/net/young/home/oms/change_dir_sun.py = coordinates of sun
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+SSH keys trouble shoot
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+Permission errors:
+
+chmod 600 id_rsa
+chmod 600 id_rsa.pub
+
+--------------------------------------------------------------------------------------------------------------------------------------------------------------
+~Basic Vim commands:	
+
+
+vim_setup:  https://github.com/razman786/vim_setup
+
+
+Vundle (Required by vim_Setup): git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+
+vim -O script1 script2 %vertical split from command line
+
+vim -o script1 script2 %horizontal split from command line
+------------------------------------------------------------------------------
+visual mode
+------------------------------------------------------------------------------
+press v to enter visual mode
+
+hjkl are the important keys for visual mode
+
+h % copy backwards
+
+ctrl + w + = % split screens size
+
+j % copy whole line forward
+
+:set paste % enter paste mode for copying large blocks of text
+
+paste from outside vim: shift + R click after copying
+
+k %copy whole line back
+
+l % copy forward
+
+y % to copy 
+
+yy %copy current line
+
+dd %cut the current line
+
+p % to paste 
+
+CTRL + Y %scroll down
+
+CTRL + E %scroll up
+
+:split % split screen horizontally
+
+ww % word
+
+cw % replace word
+
+ctrl + ww % change window
+
+vimdiff script1 script2
+
+diff script1 script2
+
+ctr +v % enter block visual mode
+
+commnet multiple lines:
+
+ctrl + v
+highlight the lines you want to comment
+shift + i
+insert $
+press esc
+
+ctrl + T : close/open side window
+
+ctrl +H : change tab
+
+------------------------------------------------------------------------------
+visual mode
+------------------------------------------------------------------------------
+
+1.) press i for insert mode.
+
+2.) esc to get out of insert mode
+
+3.) type gg in command moade to get u to top of document(command mode)
+
+4.)hold shift + g to get to bottom of document(command mode)
+
+5.)press o for new lineto
+
+6.) shift + h to get to top of page(Not top of document)
+
+7.) shift + l to get to bottom of page.
+
+8.) shift + m to get to middle
+
+9.) to undo press u in command mode, control r will redos
+
+10) To delete text press x in commadn mode, or use shit + x to act as a backspace. Can also just sue backspace in editor mode.
+
+11) To delete a whole line just press dd.
+
+12)d$ deletes evetything from where cursor is
+
+13) :wq + <Enter> Save and quit
+
+14):q! + <Enter> quit but dont save
+
+
+------------------------------------------------------------------------------
+Taql
+------------------------------------------------------------------------------
+calc sum ([select gcount(*) from Abell3376_raw-Abell3376East-corr.ms groupby ANTENNA1,ANTENNA2])  % taql sum command
+
+calc sum ([select gcount(*) from xova_timechannel/Abell3376_timechannel_t12_c1.ms groupby ANTENNA1,ANTENNA2]) = total no of rows = 394710
+
+select gcount(*) from xova_timechannel/Abell3376_timechannel_t12_c1.ms groupby ANTENNA1,ANTENNA2 = number of baselines = 1770
+
+ nrow = unique(TIME) x nb
+------------------------------------------------------------------------------
+NERDTREE
+------------------------------------------------------------------------------
+
+t % new tap
+
+ctrl + H % change taps
+
+s % split screen on file
+------------------------------------------------------------------------------
+vimrc vim plugins
+------------------------------------------------------------------------------
+
+add Plugin:
+
+add half the link to the .vimrc file % 
+
+save .vimrc file
+
+run in vim :PluginInstall
+
+------------------------------------------------------------------------------
+
+Quartical output products
+
+------------------------------------------------------------------------------
+
+
+CORRECTED_DATA should contain K-corrected visibilities that correspond to the original sky, except for the DIR1 source which has been dE calibrated and subtracted. This is for the case where you might want to proceed onto addition DDE calibration steps with extra rounds of deconvolution to get the benefit of having the problem source removed
+
+CORRECTED_RESIDUALS should contain visibilities that are K corrected, and have dE-corrected DIR1 removed, but additionally the entire sky model is subtracted from the visibilities. This is for cases when we just want to subtract the all the original sources as cleanly as possible, for example to rephase and image the Sun. No additional deconvolution takes place for the original field centre, and we do not need an extra step that subtracts the field sources from the data.
+
+------------------------------------------------------------------------------
+tmux commands
+------------------------------------------------------------------------------
+tmux ls
+
+ctrl b + d %detach
+
+tmux attach-session -t "name" % attach to session 
+
+tmux new-session -t "name" % create session 
+------------------------------------------------------------------------------
+quartical tables
+------------------------------------------------------------------------------
+from daskms.experimental.zarr import xds_from_table
+
+xdsl = xds_from_zarr("path/to/gain/dir::term")  # e.g. "gains.qc::K"
+
+# xdsl is a list of xarray datasets, one per unique combination
+# of SCAN_NUMBER, DATA_DESC_ID and FIELD_ID.
+
+xds = xdsl[0]  # You can loop over the list, this is for simplicity.
+
+print(xds)  # You should see an xarray.Dataset with coords/data_vars.
+
+# xarray.Datasets are very intuitive. You can pull out xarray.DataArrays:
+
+gains = xds.gains
+params = xds.params
+
+print(gains)
+print(params)
+
+# These are (lazily evaluated) DataArrays which contain the data_var 
+# of interest and its coords. You can pull out backing dask.Array using
+# e.g. gains.data or trigger a compute (get the actual values) using gains.values.
+
+print(gains.values)
+print(params.values)
+------------------------------------------------------------------------------
+
+
+Searching
+
+/pattern       - search forward for pattern
+?pattern       - search backward
+n              - repeat forward search
+N              - repeat backward
+
+:%s/search_for_this/replace_with_this/c   - confirm each replace
+:%s/search_for_this/replace_with_this/g    - search whole file and replace
+
+comment out multiple lines
+
+ctrl v, hilight, shift i, insert comment, escape
+
+
+.vim folder and .vimrc config 
+
+
+TURBO_SIM=$(${which python} -c "import os,Cattery.Siamese ; print(\"%s/turbo-sim.py\" % Cattery.Siamese.__path__[0])") 
+
+PIPELINER=$(which meqtree-pipeliner.py)  
+
+
+
+python ${PIPELINER} -c tdls/widefield.tdl --mt=4 @widefield ${TURBO_SIM} =simulate 
+
+
+/home/ianh/containers/oxkat-0.41.sif 
+
+bda work:
+
+Apply UV cut
+
+Oversubtraction problem still persisting, we now keep solutin intervals the same but apply a UV cut. We include stokes V to tell us more about the noise.
+
+earth rotates causing fringe pattern to ratet making it sensivite to many directions allowing mapping of source position from posiiton on interference pattern. Earth takes 24hrs to rotate, due to complex visiblity we only need to wait 12hrs to get full mapping. so what if observations are less than 12 hrs?
+
+
+Didn't mean to send that yet. But to answer, no. Corrected data doesn't really exist once you have a DD term in the mix, correct? As you cannot unbake the observed visibilities
+
+To do:
+
+lexi calibration paper, ulrich calibration paper, landman calibration notes
+
+
+
+Meeting:
+
+Try and quantify if the galaxies with enermous flux are SFR by doing the flux vs Solar mass plot
+
+Find the
+
+1.) 
+
+
+
+calc sum ([select gcount(*) from Abell3376_raw-Abell3376East-corr.ms groupby ANTENNA1,ANTENNA2])
+
+calc sum ([select gcount(*) from Abell3376_timechannel_t11_c4.ms groupby ANTENNA1,ANTENNA2])
+
+calc sum ([select gcount(*) from Abell3376_bda_0.83_rc_16000000.ms groupby ANTENNA1,ANTENNA2])
+
+
+calc sum ([select gcount(*) from Abell3376_raw-Abell3376East-corr.ms groupby ANTENNA1,ANTENNA2])
+
+FSDcalc sum ([select gcount(*) from xova_bda/Abell3376_bda_0.84.ms groupby ANTENNA1,ANTENNA2])
+
+shadems -y TIME -x FREQ -C DATA --baseline 'm000-m005' --scan 25 --title freq_v_time_m000_m005_all_scans_DATA --png freq_v_time_m000_m005_DATA_scan_25 msdir/field1_fixvis-ZwCl2341_1_p_0000-corr.ms
+
+shadems -y TIME -x FREQ -C CORRECTED_DATA --baseline 'm000-m005' --scan 25 --title freq_v_time_m000_m005_scans25_CORRECTED_DATA --png freq_v_time_m000_m005_CORRECTED_DATA_scan_25 msdir/field1_fixvis-ZwCl2341_1_p_0000-corr.ms
+
+
+
+shadems -y TIME -x FREQ -C DATA --baseline 'm000-m005' --scan 25 --title freq_v_time_m000_m005_scans25_DATA --png freq_v_time_m000_m005_all_scans_DATA msdir/field1_fixvis-ZwCl2341_1_p_0000-corr.ms
+
+
+shadems -y TIME -x FREQ -C DATA --baseline 'm050-m063' --title freq_v_time_m050-m063_all_scans_DATA --png freq_v_time_m050-m063_all_scans_DATA msdir/field1_fixvis-ZwCl2341_1_p_0000-corr.ms
+
+shadems -y TIME -x FREQ -C CORRECTED_DATA --baseline 'm050-m063' --title freq_v_time_m050-m063_all_scans_CORRECTED_DATA --png freq_v_time_m050-m063_all_scans_CORRECTED_DATA msdir/field1_fixvis-ZwCl2341_1_p_0000-corr.ms
+
+baselines[0]
+
+
